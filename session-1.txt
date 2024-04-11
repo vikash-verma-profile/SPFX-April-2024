@@ -1,0 +1,14 @@
+Sharepoint areas
+
+
+1.Collaboration
+2.Platform
+3.Interperability
+
+
+Sharepoint Versions
+
+1.SharePoint Foundation
+2.Sharepoint server
+3.Office 365
+
