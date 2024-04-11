@@ -20,3 +20,21 @@ function sumArgs(){
     return sum;
 }
 console.log(sumArgs(1,11,12,12));
+
+//function constructors
+
+function Person(){
+    this.name="Vikash",
+    this.age=23;
+
+    this.print= function(){
+        console.log("hello");
+    }
+}
+function Person(name,age){
+this.name=name;
+this.age=age;
+}
+const person1=new Person('vikash',41);
+console.log(person1.age);
+// person1.print();

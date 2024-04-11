@@ -22,3 +22,21 @@ function checkInput() {
         return true;
     }
 }
+
+function ValidateNumber(){
+    let Number1 = document.getElementById('txtNumber').value;
+    try{
+        if(Number1.trim()==="") throw "empty";
+        if(isNaN(Number1)) throw "not a number";
+        Number1=Number(Number1);
+        if(Number1<10) throw "low";
+        if(Number1>=10) throw "high"
+    }
+    catch(err){
+        document.getElementById("lblMessage").innerHTML = "Input is "+err;
+    }
+    finally{
+        document.getElementById("txtNumber").innerHTML = "";
+    }
+   
+}
