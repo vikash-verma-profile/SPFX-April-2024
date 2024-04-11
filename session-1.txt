@@ -12,3 +12,48 @@ Sharepoint Versions
 2.Sharepoint server
 3.Office 365
 
+
+visual studio code
+node js
+sharepoint online and office 365 setup free.
+
+
+
+javascript
+
+selectors
+
+1.class
+2.ID
+3.attributes name/values/text
+
+
+Create a program to validate the user have entered a number only. if he enters a text.please make the text box color to red.
+
+Javascript datatypes
+1.Number
+2.String
+3.Boolean
+4.Null
+5.Undefined
+6.Object
+7.Symbol
+8.Bigint
+
+
+javascript operator
+
+1.Arithmetic operator +,-,/,*
+2.Assigment operator =
+3.Comparision operator == ,===,!=,<,>
+4.string operators 
+5.Logical Operators && || !
+6.Bitwise Operators & | 
+7.Ternary Operators ?:
+8.Type Operators Typeof
+
+
+
+
+
+
