@@ -1,0 +1,17 @@
+Gulp=>automates SPFX development and deployment tasks
+yeoMan=>scanffolding tool for modern web apps
+
+
+step-1
+install sharepoint generator
+npm install -g @microsoft/generator-sharepoint
+step-2
+npm install -g yo ==> install yeoman
+yo @microsoft/sharepoint
+scanffold sharepoint web part project
+step-3
+npm install gulp-cli -g
+step-4
+gulp trust-dev-cert
+step-5
+gulp serve
