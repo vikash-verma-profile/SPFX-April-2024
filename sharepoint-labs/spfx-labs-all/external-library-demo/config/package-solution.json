@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "external-library-demo-client-side-solution",
+    "id": "5245d991-1ccc-43d9-afe8-a9db31498c85",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.18.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "external-library-demo description"
+      },
+      "longDescription": {
+        "default": "external-library-demo description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "external-library-demo Feature",
+        "description": "The feature that activates elements of the external-library-demo solution.",
+        "id": "7c8372d2-bf19-4af6-84a2-b07fba71e7af",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/external-library-demo.sppkg"
+  }
+}

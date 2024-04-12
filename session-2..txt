@@ -15,3 +15,8 @@ step-4
 gulp trust-dev-cert
 step-5
 gulp serve
+
+
+
+for external libraries
+npm install @types/jquery @types/jqueryui
