@@ -5,54 +5,73 @@ import {
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import type { IReadonlyTheme } from '@microsoft/sp-component-base';
-import { escape } from '@microsoft/sp-lodash-subset';
+// import { escape } from '@microsoft/sp-lodash-subset';
 
-import styles from './HelloWorldWebPart.module.scss';
+// import styles from './HelloWorldWebPart.module.scss';
 import * as strings from 'HelloWorldWebPartStrings';
 
 export interface IHelloWorldWebPartProps {
   description: string;
+
+  productname: string;
+  productdescription: string;
+  productcost: number;
+  quantity: number;
 }
 
 export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorldWebPartProps> {
 
-  private _isDarkTheme: boolean = false;
-  private _environmentMessage: string = '';
+  // private _isDarkTheme: boolean = false;
+  // private _environmentMessage: string = '';
 
   public render(): void {
     this.domElement.innerHTML = `
-    <section class="${styles.helloWorld} ${!!this.context.sdks.microsoftTeams ? styles.teams : ''}">
-      <div class="${styles.welcome}">
-        <img alt="" src="${this._isDarkTheme ? require('./assets/welcome-dark.png') : require('./assets/welcome-light.png')}" class="${styles.welcomeImage}" />
-        <h2>Well done, ${escape(this.context.pageContext.user.displayName)}!</h2>
-        <div>${this._environmentMessage}</div>
-        <div>Web part property value: <strong>${escape(this.properties.description)}</strong></div>
-      </div>
-      <div>
-        <h3>Welcome to SharePoint Framework!</h3>
-        <p>
-        The SharePoint Framework (SPFx) is a extensibility model for Microsoft Viva, Microsoft Teams and SharePoint. It's the easiest way to extend Microsoft 365 with automatic Single Sign On, automatic hosting and industry standard tooling.
-        </p>
-        <h4>Learn more about SPFx development:</h4>
-          <ul class="${styles.links}">
-            <li><a href="https://aka.ms/spfx" target="_blank">SharePoint Framework Overview</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-graph" target="_blank">Use Microsoft Graph in your solution</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-teams" target="_blank">Build for Microsoft Teams using SharePoint Framework</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-viva" target="_blank">Build for Microsoft Viva Connections using SharePoint Framework</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-store" target="_blank">Publish SharePoint Framework applications to the marketplace</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-api" target="_blank">SharePoint Framework API reference</a></li>
-            <li><a href="https://aka.ms/m365pnp" target="_blank">Microsoft 365 Developer Community</a></li>
-          </ul>
-      </div>
-    </section>`;
+    <table>
+    <tr>
+      <td>
+      Product Name
+      </td>
+      <td>
+      ${this.properties.productname}
+      </td>
+    </tr>
+    <tr>
+      <td>
+      Description
+      </td>
+      <td>
+      ${this.properties.productdescription}
+      </td>
+    </tr>
+    <tr>
+      <td>
+      Product Cost
+      </td>
+      <td>
+      ${this.properties.productcost}
+      </td>
+    </tr>
+    <tr>
+      <td>
+      Product Quantity
+      </td>
+      <td>
+      ${this.properties.quantity}
+      </td>
+    </tr>
+    </table>
+    `;
   }
 
   protected onInit(): Promise<void> {
     return this._getEnvironmentMessage().then(message => {
-      this._environmentMessage = message;
+      // this._environmentMessage = message;
     });
+    
   }
-
+  protected get disableReactivePropertyChanges():boolean{
+    return true;
+  }
 
 
   private _getEnvironmentMessage(): Promise<string> {
@@ -87,7 +106,7 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
       return;
     }
 
-    this._isDarkTheme = !!currentTheme.isInverted;
+    // this._isDarkTheme = !!currentTheme.isInverted;
     const {
       semanticColors
     } = currentTheme;
@@ -109,15 +128,42 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
       pages: [
         {
           header: {
-            description: strings.PropertyPaneDescription
+            description: "Inventory web Part"
           },
           groups: [
             {
-              groupName: strings.BasicGroupName,
+              groupName: "Product Details",
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
-                })
+                PropertyPaneTextField('productname', {
+                  label: "Product Name",
+                  multiline: false,
+                  resizable: false,
+                  placeholder: "Please enter product name", "description": "Name property field"
+                }),
+                PropertyPaneTextField('productdescription', {
+                  label: "Product Description",
+                  multiline: true,
+                  resizable: false,
+                  placeholder: "Please enter product description", "description": "Name property field"
+                }),
+                PropertyPaneTextField('productcost', {
+                  label: "Product Cost",
+                  multiline: false,
+                  resizable: false,
+                  placeholder: "Please enter product cost", "description": "Number property field"
+                }),
+                PropertyPaneTextField('quantity', {
+                  label: "Product Quantity",
+                  multiline: false,
+                  resizable: false,
+                  placeholder: "Please enter product quantity", "description": "Number property field"
+                }),
+                // PropertyPaneTextField('quantity', {
+                //   label: "Product Quantity",
+                //   multiline: false,
+                //   resizable: false,
+                //   placeholder: "Please enter product quantity", "description": "Number property field"
+                // })
               ]
             }
           ]

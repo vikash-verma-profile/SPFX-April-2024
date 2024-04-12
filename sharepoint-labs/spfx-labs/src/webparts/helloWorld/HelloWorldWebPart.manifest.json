@@ -22,7 +22,11 @@
     "description": { "default": "HelloWorld description" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "HelloWorld"
+      "description": "HelloWorld",
+      "productname": "",
+      "productdescription": "",
+      "productcost": 0,
+      "quantity": 0
     }
   }]
 }
