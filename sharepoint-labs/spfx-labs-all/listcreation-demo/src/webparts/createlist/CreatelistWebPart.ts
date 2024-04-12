@@ -5,42 +5,69 @@ import {
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import type { IReadonlyTheme } from '@microsoft/sp-component-base';
-import { escape } from '@microsoft/sp-lodash-subset';
 
-import styles from './CreatelistWebPart.module.scss';
 import * as strings from 'CreatelistWebPartStrings';
 
+import { SPHttpClient, ISPHttpClientOptions, SPHttpClientResponse } from '@microsoft/sp-http'
 export interface ICreatelistWebPartProps {
   description: string;
 }
 
 export default class CreatelistWebPart extends BaseClientSideWebPart<ICreatelistWebPartProps> {
 
-  private _isDarkTheme: boolean = false;
-  private _environmentMessage: string = '';
+  // private _isDarkTheme: boolean = false;
+  // private _environmentMessage: string = '';
 
   public render(): void {
     this.domElement.innerHTML = `
     <div>
-    New List Name:<input type='text  id='txtNewListName' /> 
+    New List Name:<input type='text'  id='txtNewListName' /> 
     <input type='button' id='btnCreateNewList' value='Create a New List' />
     </div>
    `;
-   this.bindEvents();
+    this.bindEvents();
   }
 
-  private bindEvents():void{
-    this.domElement.querySelector('#btnCreateNewList')?.addEventListener('click',()=>{
+  private bindEvents(): void {
+    this.domElement.querySelector('#btnCreateNewList')?.addEventListener('click', () => {
       this.createNewList();
     })
   }
-  private createNewList():void{
-    var newListName=(document.getElementById('#txtNewListName') as HTMLInputElement)?.value;
-    cost listUrl:string=this.context.pageContext.web.absoluteUrl
+  private createNewList(): void {
+    var newListName = (document.getElementById('txtNewListName') as HTMLInputElement)!.value;
+    const listUrl: string = this.context.pageContext.web.absoluteUrl + "/_api/web/lists/GetByTitle('"+newListName+"')";
+   
+    this.context.spHttpClient.get(listUrl,SPHttpClient.configurations.v1).then((response:SPHttpClientResponse)=>{
+      if(response.status===200){
+        alert("A list already exists with this name");
+        return;
+      }
+      if(response.status===404){
+        const url:string=this.context.pageContext.web.absoluteUrl+"/_api/web/lists";
+        const listDefination: any = {
+          "Title": newListName,
+          "Description": "new list",
+          "AllowContentTypes": true,
+          "BaseTemplate": 105,
+          "ContentTypesEnabled": true,
+        };
+        const spHttpClientOptions: ISPHttpClientOptions = {
+          "body": JSON.stringify(listDefination)
+        };
+        this.context.spHttpClient.post(url, SPHttpClient.configurations.v1, spHttpClientOptions).then((res: SPHttpClientResponse) => {
+          if (res.status === 201) {
+            alert("A new list has been created successfully");
+          } else {
+            alert("Error Message " + res.status + " - " + res.statusText);
+          }
+        });
+      }
+    });
+    
   }
   protected onInit(): Promise<void> {
     return this._getEnvironmentMessage().then(message => {
-      this._environmentMessage = message;
+      // this._environmentMessage = message;
     });
   }
 
@@ -78,7 +105,7 @@ export default class CreatelistWebPart extends BaseClientSideWebPart<ICreatelist
       return;
     }
 
-    this._isDarkTheme = !!currentTheme.isInverted;
+    // this._isDarkTheme = !!currentTheme.isInverted;
     const {
       semanticColors
     } = currentTheme;
