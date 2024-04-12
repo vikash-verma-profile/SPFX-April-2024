@@ -1,7 +1,8 @@
 import { Version } from '@microsoft/sp-core-library';
 import {
   type IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  PropertyPaneTextField,
+  PropertyPaneToggle
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import type { IReadonlyTheme } from '@microsoft/sp-component-base';
@@ -17,6 +18,9 @@ export interface IHelloWorldWebPartProps {
   productdescription: string;
   productcost: number;
   quantity: number;
+  billamount: number;
+
+  IsCertified:boolean;
 }
 
 export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorldWebPartProps> {
@@ -59,6 +63,23 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
       ${this.properties.quantity}
       </td>
     </tr>
+    <tr>
+    <td>
+    Bill Amount 
+    </td>
+    <td>
+    ${this.properties.billamount=this.properties.productcost * this.properties.quantity}
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+    Is Certified ?
+    </td>
+    <td>
+    ${this.properties.IsCertified}
+    </td>
+  </tr>
     </table>
     `;
   }
@@ -158,12 +179,12 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
                   resizable: false,
                   placeholder: "Please enter product quantity", "description": "Number property field"
                 }),
-                // PropertyPaneTextField('quantity', {
-                //   label: "Product Quantity",
-                //   multiline: false,
-                //   resizable: false,
-                //   placeholder: "Please enter product quantity", "description": "Number property field"
-                // })
+                PropertyPaneToggle('IsCertified', {
+                  key:'IsCertified',
+                  label: "Is it Certified",
+                  onText: 'ISI Certified',
+                  offText: 'Not an ISI Certified Product'
+                })
               ]
             }
           ]
