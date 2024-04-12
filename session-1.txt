@@ -53,6 +53,10 @@ javascript operator
 8.Type Operators Typeof
 
 
+Employee
+
+
+
 
 
 
