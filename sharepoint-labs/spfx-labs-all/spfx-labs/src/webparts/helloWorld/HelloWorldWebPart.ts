@@ -3,7 +3,8 @@ import {
   type IPropertyPaneConfiguration,
   PropertyPaneTextField,
   PropertyPaneToggle,
-  PropertyPaneChoiceGroup
+  PropertyPaneChoiceGroup,
+  PropertyPaneSlider
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import type { IReadonlyTheme } from '@microsoft/sp-component-base';
@@ -22,6 +23,8 @@ export interface IHelloWorldWebPartProps {
   billamount: number;
 
   IsCertified:boolean;
+  processertype:string;
+  Rating:number;
 }
 
 export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorldWebPartProps> {
@@ -81,6 +84,22 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
     ${this.properties.IsCertified}
     </td>
   </tr>
+  <tr>
+  <td>
+  Processer Type
+  </td>
+  <td>
+  ${this.properties.processertype}
+  </td>
+</tr>
+<tr>
+<td>
+Rating
+</td>
+<td>
+${this.properties.Rating}
+</td>
+</tr>
     </table>
     `;
   }
@@ -186,9 +205,23 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
                   onText: 'ISI Certified',
                   offText: 'Not an ISI Certified Product'
                 }),
+                PropertyPaneSlider("Rating",{
+                  label:'Select your Rating',
+                  min:1,
+                  max:10,
+                  step:1,
+                  showValue:true,
+                  value:1
+                }),
                 PropertyPaneChoiceGroup('processertype', {
                   label: "Choices",
-                  options:[]
+                  options:[{
+                    key:"I5",text:'Intel I5'
+                  },{
+                    key:"I7",text:'Intel I7',checked:true
+                  },{
+                    key:"I9",text:'Intel I9'
+                  }]
                 })
               ]
             }
