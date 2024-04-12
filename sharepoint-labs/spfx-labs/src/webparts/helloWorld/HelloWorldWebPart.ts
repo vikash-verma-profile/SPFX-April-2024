@@ -2,7 +2,8 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   type IPropertyPaneConfiguration,
   PropertyPaneTextField,
-  PropertyPaneToggle
+  PropertyPaneToggle,
+  PropertyPaneChoiceGroup
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import type { IReadonlyTheme } from '@microsoft/sp-component-base';
@@ -184,6 +185,10 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
                   label: "Is it Certified",
                   onText: 'ISI Certified',
                   offText: 'Not an ISI Certified Product'
+                }),
+                PropertyPaneChoiceGroup('processertype', {
+                  label: "Choices",
+                  options:[]
                 })
               ]
             }
