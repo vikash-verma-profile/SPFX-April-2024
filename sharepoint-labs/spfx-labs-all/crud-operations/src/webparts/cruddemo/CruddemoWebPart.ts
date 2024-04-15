@@ -82,8 +82,45 @@ export default class CruddemoWebPart extends BaseClientSideWebPart<ICruddemoWebP
     this.domElement.querySelector('#btnSubmit')?.addEventListener('click',()=>this.addListItem());
     this.domElement.querySelector('#btnRead')?.addEventListener('click',()=>this.readListItem());
     this.domElement.querySelector('#btnDelete')?.addEventListener('click',()=>this.deleteListItem());
+    this.domElement.querySelector('#btnUpdate')?.addEventListener('click',()=>this.updateListItem());
   }
 
+  private updateListItem():void{
+    var SoftwareTitle=(document.getElementById('txtSoftwareTitle') as HTMLInputElement)!["value"];
+    var SoftwareName=(document.getElementById('txtSoftwareName') as HTMLInputElement)!["value"];
+    var SoftwareVersion=(document.getElementById('txtSoftwareVersion') as HTMLInputElement)!["value"];
+    var SoftwareVendor=(document.getElementById('ddlSoftwareVendor') as HTMLInputElement)!["value"];
+    var SoftwareDesciption=(document.getElementById('txtSoftwareDescription') as HTMLInputElement)!["value"];
+    let id:string=(document.getElementById('txtID') as HTMLInputElement)!["value"]; 
+    const siteurl:string=this.context.pageContext.site.absoluteUrl+"/_api/web/lists/getbytitle('SoftwareCatalog')/items("+id+")";
+   
+    const itemBody:any={
+      "Title":SoftwareTitle,
+      "SoftwareVendor":SoftwareVendor,
+      "SoftwareDescription":SoftwareDesciption,
+      "SoftwareVersion":SoftwareVersion,
+      "SoftwareName":SoftwareName
+    };
+
+    const headers:any={
+      "X-HTTP-Method":"MERGE",
+      "IF-MATCH":"*"
+    };
+    const spHttpClientOptions:ISPHttpClientOptions={
+      "headers":headers,
+      "body":JSON.stringify(itemBody)
+    }
+    this.context.spHttpClient.post(siteurl,SPHttpClient.configurations.v1,spHttpClientOptions).then((respose:SPHttpClientResponse)=>{
+      if(respose.status===204){
+        let statusmessage:Element=this.domElement.querySelector('#divStatus')!;
+        statusmessage.innerHTML="List Item has been updated succssfully";
+      }
+      else{
+        let statusmessage:Element=this.domElement.querySelector('#divStatus')!;
+        statusmessage.innerHTML="An error have occured";
+      }
+    })
+  }
   private deleteListItem():void{
     let id:string=(document.getElementById('txtID') as HTMLInputElement)!["value"];
     const siteurl:string=this.context.pageContext.site.absoluteUrl+"/_api/web/lists/getbytitle('SoftwareCatalog')/items("+id+")";
