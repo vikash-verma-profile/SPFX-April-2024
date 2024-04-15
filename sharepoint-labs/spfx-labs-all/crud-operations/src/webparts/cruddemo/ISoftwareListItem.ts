@@ -3,6 +3,6 @@ export interface ISoftwareListItem{
     Title:string;
     SoftwareVendor:string;
     SoftwareDescription:string;
-    SofwareName:string;
-    SofwareVersion:string
+    SoftwareName:string;
+    SoftwareVersion:string
 }

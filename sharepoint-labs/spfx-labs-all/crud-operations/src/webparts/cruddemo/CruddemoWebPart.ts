@@ -7,6 +7,7 @@ import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import type { IReadonlyTheme } from '@microsoft/sp-component-base';
 import {SPHttpClientResponse,SPHttpClient,ISPHttpClientOptions} from '@microsoft/sp-http';
 import * as strings from 'CruddemoWebPartStrings';
+import { ISoftwareListItem } from './ISoftwareListItem';
 
 export interface ICruddemoWebPartProps {
   description: string;
@@ -79,8 +80,53 @@ export default class CruddemoWebPart extends BaseClientSideWebPart<ICruddemoWebP
   }
   private _bindEvents():void{
     this.domElement.querySelector('#btnSubmit')?.addEventListener('click',()=>this.addListItem());
+    this.domElement.querySelector('#btnRead')?.addEventListener('click',()=>this.readListItem());
+    this.domElement.querySelector('#btnDelete')?.addEventListener('click',()=>this.deleteListItem());
   }
 
+  private deleteListItem():void{
+    let id:string=(document.getElementById('txtID') as HTMLInputElement)!["value"];
+    const siteurl:string=this.context.pageContext.site.absoluteUrl+"/_api/web/lists/getbytitle('SoftwareCatalog')/items("+id+")";
+  
+    const headers:any={"X-HTTP-Method":"DELETE","IF-MATCH":"*"};
+    const spHttpClientOptions:ISPHttpClientOptions={
+      "headers":headers
+    };
+
+    this.context.spHttpClient.post(siteurl,SPHttpClient.configurations.v1,spHttpClientOptions).then((respose:SPHttpClientResponse)=>{
+      if(respose.status===204){
+        let statusmessage:Element=this.domElement.querySelector('#divStatus')!;
+        statusmessage.innerHTML="List Item has been deleted succssfully";
+      }
+      else{
+        let statusmessage:Element=this.domElement.querySelector('#divStatus')!;
+        statusmessage.innerHTML="An error have occured";
+      }
+    });
+  }
+  private readListItem():void{
+    let id:string=(document.getElementById('txtID') as HTMLInputElement)!["value"];
+    this._getListItemById(id).then(listItem=>{
+    (document.getElementById('txtSoftwareTitle') as HTMLInputElement)!["value"]=listItem.Title;
+     (document.getElementById('txtSoftwareName') as HTMLInputElement)!["value"]=listItem.SoftwareName;
+     (document.getElementById('txtSoftwareVersion') as HTMLInputElement)!["value"]=listItem.SoftwareVersion;
+    (document.getElementById('ddlSoftwareVendor') as HTMLInputElement)!["value"]=listItem.SoftwareVendor;
+     (document.getElementById('txtSoftwareDescription') as HTMLInputElement)!["value"]=listItem.SoftwareDescription;
+    }).catch(error=>{
+      let message:Element=this.domElement.querySelector('#divStatus')!;
+      message.innerHTML="Could not read the details"
+    });
+  }
+  private _getListItemById(id:string):Promise<ISoftwareListItem>{
+    const siteurl:string=this.context.pageContext.site.absoluteUrl+"/_api/web/lists/getbytitle('SoftwareCatalog')/items?$filter=Id eq "+id;
+    return this.context.spHttpClient.get(siteurl,SPHttpClient.configurations.v1).then((response:SPHttpClientResponse)=>{
+      return response.json();
+    }).then((listItems:any)=>{
+      const untypedItem:any=listItems.value[0];
+      const listItem:ISoftwareListItem=untypedItem as ISoftwareListItem;
+      return listItem;
+    }) as Promise<ISoftwareListItem>;
+  }
   private addListItem():void{
     var SoftwareTitle=(document.getElementById('txtSoftwareTitle') as HTMLInputElement)!["value"];
     var SoftwareName=(document.getElementById('txtSoftwareName') as HTMLInputElement)!["value"];
