@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "anonymous-api-demo-client-side-solution",
+    "id": "26a159d3-86a4-4ed2-aba4-eea7b3bee424",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.18.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "anonymous-api-demo description"
+      },
+      "longDescription": {
+        "default": "anonymous-api-demo description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "anonymous-api-demo Feature",
+        "description": "The feature that activates elements of the anonymous-api-demo solution.",
+        "id": "ef448b1f-69dc-4e2f-ab63-8bdd75e9c946",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/anonymous-api-demo.sppkg"
+  }
+}
