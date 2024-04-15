@@ -22,55 +22,54 @@ export default class CruddemoWebPart extends BaseClientSideWebPart<ICruddemoWebP
     <tr>
     <td>Please enter Software ID
     </td>
-    <td><input type='text' id='txtID />
-    </td>
-    <td><input type='submit' id='btnRead' value='Read Details' />
+    <td><input type='text' id='txtID' />
+    <input type='submit' id='btnRead' value='Read Details' />
     </td>
     </tr>
 
     <tr>
-    <td>Software Title
-    </td>
-    <td><input type='text' id='txtSoftwareTitle' />
+    <td>Software Title</td>
+    <td><input type='text' id='txtSoftwareTitle' /></td>
     </tr>
 
     <tr>
     <td>Software Name
     </td>
-    <td><input type='text' id='txtSoftwareName' />
+    <td><input type='text' id='txtSoftwareName' /></td>
     </tr>
     <tr>
     <td>Software Vendor
     </td>
-    <td><select id="ddlSoftwareVendor'>
+    <td>
+    <select id="ddlSoftwareVendor">
     <option value="Microsoft">Microsoft</option>
     <option value="Sun">Sun</option>
     <option value="Oracle">Oracle</option>
     <option value="Google">Google</option>
-    </select>
+    </select></td>
     </tr>
 
     <tr>
     <td>Software Version
     </td>
-    <td><input type='text' id='txtSoftwareVersion' />
+    <td><input type='text' id='txtSoftwareVersion' /></td>
     </tr>
 
     <tr>
     <td>Software Description
     </td>
-    <td><input type='text' id='txtSoftwareDescription' />
+    <td><input type='text' id='txtSoftwareDescription' /></td>
     </tr>
 
     <tr>
-    <td colspan='2' align='center>
+    <td colspan='2' align='center'>
     <input type='submit' value='Insert Item' id='btnSubmit'/>
     <input type='submit' value='Update' id='btnUpdate'/>
-    <input type='submit' value='Delete' id='btnDelete'/>
+    <input type='submit' value='Delete' id='btnDelete'/></td>
     </tr>
 
     </table>
-    <div id="divstatus" />
+    <div id="divStatus" />
     </div>
     
     `;
@@ -86,15 +85,15 @@ export default class CruddemoWebPart extends BaseClientSideWebPart<ICruddemoWebP
     var SoftwareTitle=(document.getElementById('txtSoftwareTitle') as HTMLInputElement)!["value"];
     var SoftwareName=(document.getElementById('txtSoftwareName') as HTMLInputElement)!["value"];
     var SoftwareVersion=(document.getElementById('txtSoftwareVersion') as HTMLInputElement)!["value"];
-    var SoftwareVendor=(document.getElementById('txtSoftwareVendor') as HTMLInputElement)!["value"];
-    var SoftwareDesciption=(document.getElementById('txtSoftwareDesciption') as HTMLInputElement)!["value"];
+    var SoftwareVendor=(document.getElementById('ddlSoftwareVendor') as HTMLInputElement)!["value"];
+    var SoftwareDesciption=(document.getElementById('txtSoftwareDescription') as HTMLInputElement)!["value"];
 
     const siteurl:string=this.context.pageContext.site.absoluteUrl+"/_api/web/lists/getbytitle('SoftwareCatalog')/items"
     
     const itemBody:any={
       "Title":SoftwareTitle,
       "SoftwareVendor":SoftwareVendor,
-      "SoftwareDesciption":SoftwareDesciption,
+      "SoftwareDescription":SoftwareDesciption,
       "SoftwareVersion":SoftwareVersion,
       "SoftwareName":SoftwareName
     };
@@ -106,7 +105,6 @@ export default class CruddemoWebPart extends BaseClientSideWebPart<ICruddemoWebP
       if(respose.status===201){
         let statusmessage:Element=this.domElement.querySelector('#divStatus')!;
         statusmessage.innerHTML="List Item has been created succssfully";
-        this.clearError();
       }
       else{
         let statusmessage:Element=this.domElement.querySelector('#divStatus')!;
