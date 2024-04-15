@@ -1,0 +1,197 @@
+import { Version } from '@microsoft/sp-core-library';
+import {
+  type IPropertyPaneConfiguration,
+  PropertyPaneTextField
+} from '@microsoft/sp-property-pane';
+import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
+import type { IReadonlyTheme } from '@microsoft/sp-component-base';
+import {SPHttpClientResponse,SPHttpClient,ISPHttpClientOptions} from '@microsoft/sp-http';
+import * as strings from 'CruddemoWebPartStrings';
+
+export interface ICruddemoWebPartProps {
+  description: string;
+}
+
+export default class CruddemoWebPart extends BaseClientSideWebPart<ICruddemoWebPartProps> {
+
+  public render(): void {
+    this.domElement.innerHTML = `
+    <div>
+    <table border='5' bgcolor='aqua'>
+
+    <tr>
+    <td>Please enter Software ID
+    </td>
+    <td><input type='text' id='txtID />
+    </td>
+    <td><input type='submit' id='btnRead' value='Read Details' />
+    </td>
+    </tr>
+
+    <tr>
+    <td>Software Title
+    </td>
+    <td><input type='text' id='txtSoftwareTitle' />
+    </tr>
+
+    <tr>
+    <td>Software Name
+    </td>
+    <td><input type='text' id='txtSoftwareName' />
+    </tr>
+    <tr>
+    <td>Software Vendor
+    </td>
+    <td><select id="ddlSoftwareVendor'>
+    <option value="Microsoft">Microsoft</option>
+    <option value="Sun">Sun</option>
+    <option value="Oracle">Oracle</option>
+    <option value="Google">Google</option>
+    </select>
+    </tr>
+
+    <tr>
+    <td>Software Version
+    </td>
+    <td><input type='text' id='txtSoftwareVersion' />
+    </tr>
+
+    <tr>
+    <td>Software Description
+    </td>
+    <td><input type='text' id='txtSoftwareDescription' />
+    </tr>
+
+    <tr>
+    <td colspan='2' align='center>
+    <input type='submit' value='Insert Item' id='btnSubmit'/>
+    <input type='submit' value='Update' id='btnUpdate'/>
+    <input type='submit' value='Delete' id='btnDelete'/>
+    </tr>
+
+    </table>
+    <div id="divstatus" />
+    </div>
+    
+    `;
+
+    this._bindEvents();
+   // this.readAllItems();
+  }
+  private _bindEvents():void{
+    this.domElement.querySelector('#btnSubmit')?.addEventListener('click',()=>this.addListItem());
+  }
+
+  private addListItem():void{
+    var SoftwareTitle=(document.getElementById('txtSoftwareTitle') as HTMLInputElement)!["value"];
+    var SoftwareName=(document.getElementById('txtSoftwareName') as HTMLInputElement)!["value"];
+    var SoftwareVersion=(document.getElementById('txtSoftwareVersion') as HTMLInputElement)!["value"];
+    var SoftwareVendor=(document.getElementById('txtSoftwareVendor') as HTMLInputElement)!["value"];
+    var SoftwareDesciption=(document.getElementById('txtSoftwareDesciption') as HTMLInputElement)!["value"];
+
+    const siteurl:string=this.context.pageContext.site.absoluteUrl+"/_api/web/lists/getbytitle('SoftwareCatalog')/items"
+    
+    const itemBody:any={
+      "Title":SoftwareTitle,
+      "SoftwareVendor":SoftwareVendor,
+      "SoftwareDesciption":SoftwareDesciption,
+      "SoftwareVersion":SoftwareVersion,
+      "SoftwareName":SoftwareName
+    };
+
+    const spHttpClientOptions:ISPHttpClientOptions={
+      "body":JSON.stringify(itemBody)
+    }
+    this.context.spHttpClient.post(siteurl,SPHttpClient.configurations.v1,spHttpClientOptions).then((respose:SPHttpClientResponse)=>{
+      if(respose.status===201){
+        let statusmessage:Element=this.domElement.querySelector('#divStatus')!;
+        statusmessage.innerHTML="List Item has been created succssfully";
+        this.clearError();
+      }
+      else{
+        let statusmessage:Element=this.domElement.querySelector('#divStatus')!;
+        statusmessage.innerHTML="An error have occured";
+      }
+    })
+  
+  }
+
+  protected onInit(): Promise<void> {
+    return this._getEnvironmentMessage().then(message => {
+    
+    });
+  }
+
+
+
+  private _getEnvironmentMessage(): Promise<string> {
+    if (!!this.context.sdks.microsoftTeams) { // running in Teams, office.com or Outlook
+      return this.context.sdks.microsoftTeams.teamsJs.app.getContext()
+        .then(context => {
+          let environmentMessage: string = '';
+          switch (context.app.host.name) {
+            case 'Office': // running in Office
+              environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentOffice : strings.AppOfficeEnvironment;
+              break;
+            case 'Outlook': // running in Outlook
+              environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentOutlook : strings.AppOutlookEnvironment;
+              break;
+            case 'Teams': // running in Teams
+            case 'TeamsModern':
+              environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentTeams : strings.AppTeamsTabEnvironment;
+              break;
+            default:
+              environmentMessage = strings.UnknownEnvironment;
+          }
+
+          return environmentMessage;
+        });
+    }
+
+    return Promise.resolve(this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentSharePoint : strings.AppSharePointEnvironment);
+  }
+
+  protected onThemeChanged(currentTheme: IReadonlyTheme | undefined): void {
+    if (!currentTheme) {
+      return;
+    }
+
+    
+    const {
+      semanticColors
+    } = currentTheme;
+
+    if (semanticColors) {
+      this.domElement.style.setProperty('--bodyText', semanticColors.bodyText || null);
+      this.domElement.style.setProperty('--link', semanticColors.link || null);
+      this.domElement.style.setProperty('--linkHovered', semanticColors.linkHovered || null);
+    }
+
+  }
+
+  protected get dataVersion(): Version {
+    return Version.parse('1.0');
+  }
+
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+    return {
+      pages: [
+        {
+          header: {
+            description: strings.PropertyPaneDescription
+          },
+          groups: [
+            {
+              groupName: strings.BasicGroupName,
+              groupFields: [
+                PropertyPaneTextField('description', {
+                  label: strings.DescriptionFieldLabel
+                })
+              ]
+            }
+          ]
+        }
+      ]
+    };
+  }
+}
