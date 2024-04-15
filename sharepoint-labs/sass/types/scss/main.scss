@@ -1,0 +1,32 @@
+//strings
+
+.strings {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-style: italic;
+}
+
+//colors
+.colors {
+    color: red;
+    background-color: #ff0000;
+    border-color: rgb(255, 0, 0);
+    outline-color: hsl(0, 100%, 50%);
+}
+
+//lists
+.lists {
+    margin: 10px 15px 5px 20px;
+}
+
+//Maps
+$colors: (
+    "primary":red,
+    2:green,
+    3:blue
+);
+
+h1 {
+    color: map-get($colors, primary);
+    background-color: map-get($colors, 2)
+}
