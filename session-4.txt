@@ -1,0 +1,14 @@
+gulp build
+gulp bundle --ship
+
+
+gulp bundle --debug
+gulp package-solution --ship
+
+create react project
+
+npx create-react-app <app-name>
+
+run react-project
+
+npm start
