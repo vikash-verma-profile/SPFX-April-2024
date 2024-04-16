@@ -18,9 +18,6 @@ export interface IReactcruddemoWebPartProps {
 
 export default class ReactcruddemoWebPart extends BaseClientSideWebPart<IReactcruddemoWebPartProps> {
 
-  private _isDarkTheme: boolean = false;
-  private _environmentMessage: string = '';
-
   public render(): void {
     const element: React.ReactElement<IReactcruddemoProps> = React.createElement(
       Reactcruddemo,
@@ -36,7 +33,6 @@ export default class ReactcruddemoWebPart extends BaseClientSideWebPart<IReactcr
 
   protected onInit(): Promise<void> {
     return this._getEnvironmentMessage().then(message => {
-      this._environmentMessage = message;
     });
   }
 
@@ -73,8 +69,6 @@ export default class ReactcruddemoWebPart extends BaseClientSideWebPart<IReactcr
     if (!currentTheme) {
       return;
     }
-
-    this._isDarkTheme = !!currentTheme.isInverted;
     const {
       semanticColors
     } = currentTheme;
