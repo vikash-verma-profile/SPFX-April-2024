@@ -3,17 +3,92 @@ import styles from './Reactcruddemo.module.scss';
 import type { IReactcruddemoProps } from './IReactcruddemoProps';
 import { escape } from '@microsoft/sp-lodash-subset';
 
-import {TextField} from 'office-ui-fabric-react';
+import { TextField, PrimaryButton, DetailsList, IDropdownStyles } from 'office-ui-fabric-react';
+import { ISoftwareListItem } from './ISoftwareListItem';
+import { ITextFieldStyles } from '@fluentui/react';
+import { ICrudWithReactState } from './ICrudWithReactState';
 
-export default class Reactcruddemo extends React.Component<IReactcruddemoProps, {}> {
+
+let _softwareListColumns = [
+  {
+    key: 'ID',
+    name: 'ID',
+    fieldName: 'ID',
+    minWidth: 50,
+    maxwidth: 100,
+    isResizable: true
+  },
+  {
+    key: 'Title',
+    name: 'Title',
+    fieldName: 'Title',
+    minWidth: 50,
+    maxwidth: 100,
+    isResizable: true
+  },
+  {
+    key: 'SoftwareName',
+    name: 'SoftwareName',
+    fieldName: 'SoftwareName',
+    minWidth: 50,
+    maxwidth: 100,
+    isResizable: true
+  },
+  {
+    key: 'SoftwareVendor',
+    name: 'SoftwareVendor',
+    fieldName: 'SoftwareVendor',
+    minWidth: 50,
+    maxwidth: 100,
+    isResizable: true
+  },
+  {
+    key: 'SoftwareVersion',
+    name: 'SoftwareVersion',
+    fieldName: 'SoftwareVersion',
+    minWidth: 50,
+    maxwidth: 100,
+    isResizable: true
+  },
+  {
+    key: 'SoftwareDescription',
+    name: 'SoftwareDescription',
+    fieldName: 'SoftwareDescription',
+    minWidth: 50,
+    maxwidth: 100,
+    isResizable: true
+  },
+];
+
+const textFieldStyles: Partial<ITextFieldStyles> = { fieldGroup: { width: 300 } };
+const narrowFieldStyles: Partial<IDropdownStyles> = { dropdown: { width: 300 } };
+export default class Reactcruddemo extends React.Component<IReactcruddemoProps, ICrudWithReactState> {
+  private _selection: Selection;
+  private _onItemSelectionChanged = () => {
+    this.setState({ SoftwareListItem: (this._selection.getSelection()[0] as ISoftwareListItem) });
+  }
+
+  constructor(props: IReactcruddemoProps, state: ICrudWithReactState) {
+    super(props);
+    this.state = {
+      status: 'Ready',
+      SoftwareListItems: [],
+      SoftwareListItem: {
+        Id: 0,
+        Title: "",
+        SoftwareName: "",
+        SoftwareVendor: "Select an option",
+        SoftwareVersion: "",
+        SoftwareDescription: ""
+      }
+    };
+    this._selection = new Selection({ onSelectionChanged: this._onItemSelectionChanged, });
+  }
+
+  
   public render(): React.ReactElement<IReactcruddemoProps> {
-    const {
-      description,
-      isDarkTheme,
-      environmentMessage,
-      hasTeamsContext,
-      userDisplayName
-    } = this.props;
+
+
 
     return (
       <section className={`${styles.reactcruddemo} ${hasTeamsContext ? styles.teams : ''}`}>
@@ -39,7 +114,7 @@ export default class Reactcruddemo extends React.Component<IReactcruddemoProps, 
             <li><a href="https://aka.ms/m365pnp" target="_blank" rel="noreferrer">Microsoft 365 Developer Community</a></li>
           </ul>
         </div>
-      </section>
+      </section >
     );
   }
 }
