@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "reactcruddemo-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/reactcruddemo/ReactcruddemoWebPart.js",
+          "manifest": "./src/webparts/reactcruddemo/ReactcruddemoWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ReactcruddemoWebPartStrings": "lib/webparts/reactcruddemo/loc/{locale}.js"
+  }
+}
