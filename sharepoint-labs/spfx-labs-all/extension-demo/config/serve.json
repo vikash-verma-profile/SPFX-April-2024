@@ -1,0 +1,31 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/spfx-serve.schema.json",
+  "port": 4321,
+  "https": true,
+  "serveConfigurations": {
+    "default": {
+      "pageUrl": "https://levelupsolutionsin.sharepoint.com/sites/allcompany/SitePages/ACDemo.aspx",
+      "customActions": {
+        "b072a9d2-6011-48fa-a12f-4f4e1afecd05": {
+          "location": "ClientSideExtension.ApplicationCustomizer",
+          "properties": {
+            "Top": "Header of the page",
+            "Bottom": "Footer of the page"
+          }
+        }
+      }
+    },
+    "helloWorld": {
+      "pageUrl": "https://levelupsolutionsin.sharepoint.com/sites/allcompany/SitePages/ACDemo.aspx",
+      "customActions": {
+        "b072a9d2-6011-48fa-a12f-4f4e1afecd05": {
+          "location": "ClientSideExtension.ApplicationCustomizer",
+          "properties": {
+            "Top": "Header of the page",
+            "Bottom": "Footer of the page"
+          }
+        }
+      }
+    }
+  }
+}
