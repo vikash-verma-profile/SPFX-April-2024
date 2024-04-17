@@ -1,0 +1,22 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "ext-lib-demo-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/extLibDemo/ExtLibDemoWebPart.js",
+          "manifest": "./src/webparts/extLibDemo/ExtLibDemoWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {
+    "jquery": "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js",
+    "jqueryui": "https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+    
+  },
+  "localizedResources": {
+    "ExtLibDemoWebPartStrings": "lib/webparts/extLibDemo/loc/{locale}.js"
+  }
+}

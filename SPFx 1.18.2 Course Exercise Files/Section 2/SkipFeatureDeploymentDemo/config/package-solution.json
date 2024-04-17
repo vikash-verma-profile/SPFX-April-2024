@@ -1,0 +1,14 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "skip-feature-deployment-demo-client-side-solution",
+    "id": "bf3062fa-26ae-471a-8b1d-10d924ece3f5",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/skip-feature-deployment-demo.sppkg"
+  }
+}

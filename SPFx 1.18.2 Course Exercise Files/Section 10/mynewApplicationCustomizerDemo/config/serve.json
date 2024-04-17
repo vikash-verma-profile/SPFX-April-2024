@@ -1,0 +1,30 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/core-build/serve.schema.json",
+  "port": 4321,
+  "https": true,
+  "serveConfigurations": {
+    "default": {
+      "pageUrl": "https://levelupsolutionsin.sharepoint.com//SitePages/ACDemo.aspx",
+      "customActions": {
+        "7fce4f17-c533-4794-9814-d40f9a16e1ce": {
+          "location": "ClientSideExtension.ApplicationCustomizer",
+          "properties": {
+            "Top": "Header of the page",
+            "Bottom": "Footer of the page"
+          }
+        }
+      }
+    },
+    "acDemoNew": {
+      "pageUrl": "https://levelupsolutionsin.sharepoint.com//SitePages/ACDemo.aspx",
+      "customActions": {
+        "7fce4f17-c533-4794-9814-d40f9a16e1ce": {
+          "location": "ClientSideExtension.ApplicationCustomizer",
+          "properties": {
+            "testMessage": "Test message"
+          }
+        }
+      }
+    }
+  }
+}

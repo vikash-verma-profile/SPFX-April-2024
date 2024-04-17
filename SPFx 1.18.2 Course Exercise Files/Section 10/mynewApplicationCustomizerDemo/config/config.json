@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "ac-demo-new-application-customizer": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/acDemoNew/AcDemoNewApplicationCustomizer.js",
+          "manifest": "./src/extensions/acDemoNew/AcDemoNewApplicationCustomizer.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "AcDemoNewApplicationCustomizerStrings": "lib/extensions/acDemoNew/loc/{locale}.js"
+  }
+}

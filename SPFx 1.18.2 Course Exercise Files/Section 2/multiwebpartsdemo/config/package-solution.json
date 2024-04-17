@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "multiwebpartsdemo-client-side-solution",
+    "id": "fc3a7713-9754-4ced-9bcb-e2c69add4e2e",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/multiwebpartsdemo.sppkg"
+  }
+}

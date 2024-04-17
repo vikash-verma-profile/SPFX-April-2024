@@ -1,0 +1,31 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/core-build/serve.schema.json",
+  "port": 4321,
+  "https": true,
+  "serveConfigurations": {
+    "default": {
+      "pageUrl": "https://levelupsolutionsin.sharepoint.com//Lists/ProjectsStatus/AllItems.aspx",
+      "customActions": {
+        "68bc8e33-a7e6-424e-b11b-75f617cce9b5": {
+          "location": "ClientSideExtension.ListViewCommandSet.CommandBar",
+          "properties": {
+            "sampleTextOne": "One item is selected in the list",
+            "sampleTextTwo": "Multiple items are selected..."
+          }
+        }
+      }
+    },
+    "myCommandSetDemoNew": {
+      "pageUrl": "https://levelupsolutionsin.sharepoint.com//Lists/ProjectsStatus/AllItems.aspx",
+      "customActions": {
+        "68bc8e33-a7e6-424e-b11b-75f617cce9b5": {
+          "location": "ClientSideExtension.ListViewCommandSet.CommandBar",
+          "properties": {
+            "sampleTextOne": "One item is selected in the list",
+            "sampleTextTwo": "Multiple items are selected..."
+          }
+        }
+      }
+    }
+  }
+}

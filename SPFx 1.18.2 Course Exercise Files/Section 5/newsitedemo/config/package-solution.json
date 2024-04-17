@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "newsitedemo-client-side-solution",
+    "id": "f95cc388-6de6-4a1c-b96b-bf398c7a307b",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.18.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "newsitedemo description"
+      },
+      "longDescription": {
+        "default": "newsitedemo description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "newsitedemo Feature",
+        "description": "The feature that activates elements of the newsitedemo solution.",
+        "id": "afbbffad-9234-443c-8b14-3853f548a2b3",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/newsitedemo.sppkg"
+  }
+}

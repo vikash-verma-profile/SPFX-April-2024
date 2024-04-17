@@ -1,0 +1,29 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/core-build/serve.schema.json",
+  "port": 4321,
+  "https": true,
+  "serveConfigurations": {
+    "default": {
+      "pageUrl": "https://levelupsolutionsin.sharepoint.com//Lists/ProjectsStatus/AllItems.aspx",
+      "fieldCustomizers": {
+        "Status": {
+          "id": "b5f8cf21-c938-43ce-afbf-05610f9ce2c6",
+          "properties": {
+            "sampleText": "Completed"
+          }
+        }
+      }
+    },
+    "myfieldcustomizerextensionnew": {
+      "pageUrl": "https://levelupsolutionsin.sharepoint.com//Lists/ProjectsStatus/AllItems.aspx",
+      "fieldCustomizers": {
+        "InternalFieldName": {
+          "id": "b5f8cf21-c938-43ce-afbf-05610f9ce2c6",
+          "properties": {
+            "Status": "Completed"
+          }
+        }
+      }
+    }
+  }
+}

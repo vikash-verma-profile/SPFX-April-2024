@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "graph-apiup-demo-client-side-solution",
+    "id": "be9c02af-9ad7-43a9-a82b-fb32475a136e",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false,
+    
+    "webApiPermissionRequests": [{  
+      "resource": "Microsoft Graph",  
+      "scope": "User.ReadBasic.All"  
+  }]
+
+  },
+  "paths": {
+    "zippedPackage": "solution/graph-apiup-demo.sppkg"
+  }
+}

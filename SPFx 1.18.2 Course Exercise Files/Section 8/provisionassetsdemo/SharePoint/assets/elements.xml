@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+
+  <Field ID="{639f20ef-f246-4c86-9b68-9b4ac9fa680f}"
+  Name="SoftwareName"
+  Group="CustomDemoGroup"
+  Type="Text"
+  Hidden="FALSE"
+  DisplayName="SoftwareName" />
+
+  <Field ID="{287F71C5-026D-42B2-9FB8-5DB35A69ACFB}"
+  Name="SoftwareVersion"
+  Group="CustomDemoGroup"
+  Type="Text"
+  Hidden="FALSE"
+  DisplayName="SoftwareVersion" />
+
+  <Field ID="{86BFF556-D9B5-45CE-8187-E523DEB6F5AC}"
+  Name="SoftwareDescription"
+  Group="CustomDemoGroup"
+  Type="Text"
+  Hidden="FALSE"
+  DisplayName="SoftwareDescription" />
+
+    
+
+  <Field ID="{A4D15F6B-0922-44C4-951A-27B461F5019D}"
+  Name="SoftwareVendor"
+  Group="CustomDemoGroup"
+  DisplayName="Software Vendor"
+  Type="Choice" 
+  Required="TRUE">
+    <CHOICES>
+      <CHOICE>Microsoft</CHOICE>
+      <CHOICE>Sun Microsystem</CHOICE>
+      <CHOICE>Adobe</CHOICE>
+      <CHOICE>Others</CHOICE>
+    </CHOICES>
+  </Field>  
+
+
+<ContentType ID="0x0100F132E371DCCF4A8E9D08D47E54214C36" 
+               Name="SoftwareContentType2" 
+               Group="Custom Content Types2" 
+               Description="My Content Type2">
+    <FieldRefs>
+      <FieldRef ID="{639f20ef-f246-4c86-9b68-9b4ac9fa680f}" />
+      <FieldRef ID="{287F71C5-026D-42B2-9FB8-5DB35A69ACFB}" />           
+      <FieldRef ID="{86BFF556-D9B5-45CE-8187-E523DEB6F5AC}" />
+      <FieldRef ID="{A4D15F6B-0922-44C4-951A-27B461F5019D}" />
+    </FieldRefs>
+  </ContentType>
+  
+
+    <ListInstance 
+    CustomSchema="schema.xml"
+    FeatureId="00bfea71-de22-43b2-a848-c05709900100"
+    Title="MicrosoftSoftware2"    
+    Description="Microsoft software2"
+    TemplateType="100" 
+    Url="Lists/MicrosoftSoftware2" 
+    >
+    
+  </ListInstance>
+  
+</Elements>

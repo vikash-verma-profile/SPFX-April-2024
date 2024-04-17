@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "reactlifecycledemo-client-side-solution",
+    "id": "972deed2-719a-465f-83f8-84d065c62895",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/reactlifecycledemo.sppkg"
+  }
+}

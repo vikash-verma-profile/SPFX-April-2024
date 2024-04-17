@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "testmybrandnewcustomlibrarydemo-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/testmybrandnewcustomlibrarydemo/TestmybrandnewcustomlibrarydemoWebPart.js",
+          "manifest": "./src/webparts/testmybrandnewcustomlibrarydemo/TestmybrandnewcustomlibrarydemoWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "TestmybrandnewcustomlibrarydemoWebPartStrings": "lib/webparts/testmybrandnewcustomlibrarydemo/loc/{locale}.js"
+  }
+}

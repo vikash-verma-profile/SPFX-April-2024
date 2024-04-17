@@ -1,0 +1,22 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "16.20.1",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.9.1"
+    },
+    "version": "1.17.4",
+    "libraryName": "fieldcustext",
+    "libraryId": "778ff7ba-91d3-4847-ba94-1209ff62a0fc",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "fieldcustext",
+    "solutionShortDescription": "fieldcustext description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "extension",
+    "extensionType": "FieldCustomizer"
+  }
+}

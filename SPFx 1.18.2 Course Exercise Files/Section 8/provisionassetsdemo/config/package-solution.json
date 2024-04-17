@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "provisionassetsdemo-client-side-solution",
+    "id": "dd6e7bf3-ada6-43f7-be0a-05b674eed33c",
+    "version": "3.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false,
+
+    "features": [{
+      "title": "Provisioning Assets Demo New 2",
+      "description": "spartefacts-provisioning Feature",
+      "id": "cab9963d-1be6-4832-95fc-3e40ef7c729e",     
+      "version": "3.0.0.0",
+      "assets": {
+        "elementManifests": [
+          "elements.xml",
+          "elements-v2.xml"
+          
+         
+        ],
+        "elementFiles":[
+          "schema.xml"
+        ],
+        "upgradeActions":[
+          "upgrade-actions-v2.xml"
+        ]
+        
+      }
+    }]
+
+
+
+  },
+  "paths": {
+    "zippedPackage": "solution/provisionassetsdemo.sppkg"
+  }
+}

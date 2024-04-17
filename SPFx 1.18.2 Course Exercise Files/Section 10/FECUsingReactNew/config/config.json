@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "fec-demo-new-field-customizer": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/fecDemoNew/FecDemoNewFieldCustomizer.js",
+          "manifest": "./src/extensions/fecDemoNew/FecDemoNewFieldCustomizer.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "FecDemoNewFieldCustomizerStrings": "lib/extensions/fecDemoNew/loc/{locale}.js"
+  }
+}
