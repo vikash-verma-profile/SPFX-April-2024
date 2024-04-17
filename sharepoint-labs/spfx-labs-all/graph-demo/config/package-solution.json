@@ -1,0 +1,44 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "graph-demo-client-side-solution",
+    "id": "2380644b-e149-4b64-846e-642ecadb65f5",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "webApiPermissionRequests": [{
+      "resource": "Microsoft Graph",
+      "scope": "User.ReadBasic.All"
+    }],
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.18.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "graph-demo description"
+      },
+      "longDescription": {
+        "default": "graph-demo description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "graph-demo Feature",
+        "description": "The feature that activates elements of the graph-demo solution.",
+        "id": "aebd1887-7e26-43b9-a7eb-642943f70d5b",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/graph-demo.sppkg"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "graphdemo-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/graphdemo/GraphdemoWebPart.js",
+          "manifest": "./src/webparts/graphdemo/GraphdemoWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "GraphdemoWebPartStrings": "lib/webparts/graphdemo/loc/{locale}.js"
+  }
+}
