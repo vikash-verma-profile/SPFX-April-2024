@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.20.2",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.12.0"
+    },
+    "version": "1.18.2",
+    "libraryName": "provisionassetsdemo",
+    "libraryId": "6b7a0a7b-33f2-454a-ae9c-67d44d50d790",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "provisionassetsdemo",
+    "solutionShortDescription": "provisionassetsdemo description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

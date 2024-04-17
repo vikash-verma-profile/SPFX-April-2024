@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "provisiondemo-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/provisiondemo/ProvisiondemoWebPart.js",
+          "manifest": "./src/webparts/provisiondemo/ProvisiondemoWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ProvisiondemoWebPartStrings": "lib/webparts/provisiondemo/loc/{locale}.js"
+  }
+}
