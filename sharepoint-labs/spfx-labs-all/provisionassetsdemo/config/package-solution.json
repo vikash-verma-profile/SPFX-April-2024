@@ -30,7 +30,19 @@
         "title": "provisionassetsdemo Feature",
         "description": "The feature that activates elements of the provisionassetsdemo solution.",
         "id": "4e65703f-40a1-41f3-88dd-565dcfb23f8a",
-        "version": "1.0.0.0"
+        "version": "1.0.0.0",
+        "assets": {
+          "elementManifests": [
+            "elements.xml",
+            "elements-v2.xml"
+          ],
+          "elementFiles": [
+            "schema.xml"
+          ],
+          "upgradeActions": [
+            "upgrade-actions-v2.xml"
+          ]
+        }
       }
     ]
   },
