@@ -12,3 +12,10 @@ npx create-react-app <app-name>
 run react-project
 
 npm start
+
+npm install @microsoft/microsoft-graph-types --save-dev
+
+
+npm install --save-dev gulp-sequence
+
+gulp tasks
