@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "gulp-tasks-client-side-solution",
+    "id": "85180db8-7aee-4356-a1e4-15408eb10bf2",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.18.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "gulp-tasks description"
+      },
+      "longDescription": {
+        "default": "gulp-tasks description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "gulp-tasks Feature",
+        "description": "The feature that activates elements of the gulp-tasks solution.",
+        "id": "0041ed1a-f5ee-46c9-b6d2-ae1ccb97db2e",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/gulp-tasks.sppkg"
+  }
+}
